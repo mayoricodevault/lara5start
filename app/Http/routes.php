@@ -60,6 +60,19 @@ Route::group(array('prefix' => 'admin'), function () {
         Route::get('{userId}', array('as' => 'users.show', 'uses' => 'UsersController@show'));
     });
 
+    # Client Management
+    Route::group(array('prefix' => 'users','before' => 'Sentry'), function () {
+        Route::get('/', array('as' => 'users', 'uses' => 'UsersController@getIndex'));
+        Route::get('create',array('as' => 'users.create', 'uses' => 'UsersController@getCreate'));
+        Route::post('create', 'UsersController@postCreate');
+        Route::get('{userId}/edit', array('as' => 'users.edit', 'uses' => 'UsersController@getEdit'));
+        Route::post('{userId}/edit', 'UsersController@postEdit');
+        Route::get('{userId}/delete', array('as' => 'delete/user', 'uses' => 'UsersController@getDelete'));
+        Route::get('{userId}/confirm-delete', array('as' => 'confirm-delete/user', 'uses' => 'UsersController@getModalDelete'));
+        Route::get('{userId}/restore', array('as' => 'restore/user', 'uses' => 'UsersController@getRestore'));
+        Route::get('{userId}', array('as' => 'users.show', 'uses' => 'UsersController@show'));
+    });
+
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
         Route::get('/', array('as' => 'groups', 'uses' => 'GroupsController@getIndex'));

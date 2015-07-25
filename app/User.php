@@ -17,7 +17,7 @@ class User extends Model {
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'tb_users';
 
     /**
      * The attributes excluded from the model's JSON form.

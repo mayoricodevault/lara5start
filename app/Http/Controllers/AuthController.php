@@ -63,9 +63,9 @@ class AuthController extends AdminController
         }
 
         try {
+
             // Try to log the user in
             Sentry::authenticate(Input::only('email', 'password'), Input::get('remember-me', 0));
-
             // Get the page we were before
             $redirect = Session::get('loginRedirect', 'account');
 
