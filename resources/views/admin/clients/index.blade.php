@@ -66,11 +66,11 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{{ $user->fullname }}}</td>
-                                <td>{{{ $user->username }}}</td>
+                                <td>{{{ $user->first_name }}}</td>
+                                <td>{{{ $user->last_name }}}</td>
                                 <td>{{{ $user->email }}}</td>
                                 <td>
-                                    @if($user->confirmed)
+                                    @if($user->activated)
                                         Activated
                                     @else
                                         Pending
